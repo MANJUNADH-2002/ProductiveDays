@@ -1,0 +1,323 @@
+ ->>>>>>>>>finding second number in one iteration
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	
+	int [] arr={3,1,5,2,4};
+	int high=Integer.MIN_VALUE;
+    int low=Integer.MIN_VALUE;
+    for(int i=0;i<arr.length;i++){
+     if(arr[i]>high){
+         low=high; //previou  high become low
+         high=arr[i];
+     }
+     else if(arr[i]>low && arr[i]!=high){
+         low=arr[i];
+     }
+    }
+    System.out.print(low);
+	}
+}
+
+---->>>>>>>>>>// atoi(leet code problem 8)  
+  involves string 
+   
+//{ Driver Code Starts
+// Initial template for JAVA
+
+import java.util.Scanner;
+
+class Solution {
+    public int myAtoi(String s) {
+    if(s==null || s.length()==0){
+        return 0;
+    }
+    int length=s.length();
+    int index=0;
+    while(index<length && s.charAt(index)==' '){
+        index++;
+    }
+    if(index==length){
+        return 0;
+    }
+    int sign=1;
+    if(s.charAt(index)=='+' || s.charAt(index)=='-'){
+        if(s.charAt(index)=='-'){
+            sign=-1;
+        }
+         index++;
+    }
+    int result=0;
+    while(index<length){
+        char ch=s.charAt(index);
+        if(ch>='0' && ch<='9'){
+        int digit=ch-'0';
+    if(result>(Integer.MAX_VALUE-digit)/10){
+        return (sign==1)?Integer.MAX_VALUE:Integer.MIN_VALUE;
+    }
+    result=result*10+digit;
+    index++;
+    }
+    else{
+       break;
+    }
+    }
+    return result*sign;
+}
+}
+
+--------------------------------------------------------------------------------> LinkedList Implementation 
+
+class Node{
+ int data;
+Node next;
+}
+package LinkedListImplementation;
+
+public class LinkedList2 {
+	Node head;
+	public void insertAtLast(int data) {
+     Node node=new Node();
+     node.data=data;
+     node.next=null;
+     if(head==null) {
+    	 node=head;
+     }
+     else {
+    	 Node temp=head;
+    	 
+    	 while(temp.next!=null) {
+    		 temp=temp.next;
+    	 }
+    	 temp.next=node;
+     }
+	}
+	
+	public void show() {
+		 Node temp=head;
+		 while(temp.next!=null) {
+			 System.out.print(temp.data+"->");
+			 temp=temp.next;
+		 }
+	}
+	public void insertAtBegin(int data) {
+	 Node node=new Node();
+	 node.data=data;
+	 node.next=null;
+     node.next=head; // first node is new node it next node is head
+    head=node;  //changing head to new node so that it beacem first element
+    }
+	
+	public int Middle() {
+		//assuming there is linkedlist
+		Node low=head;
+		Node high=head;
+		while(high.next!=null && high.next.next!=null) {
+			low=low.next;
+			high=high.next.next;
+		}
+		return low.data;
+	}
+	
+	public void insertAtPosition(int position,int data) {
+		Node node=new Node();
+		node.data=data;
+        node.next=null;
+        if(position==0) {
+        	insertAtBegin(data);
+        	return;
+        }
+        Node temp=head;
+         for(int i=0;i<position-1;i++) {
+        	 temp=temp.next;
+         }
+         node.next=temp.next;
+        temp.next=node;
+	}
+
+}
+
+// runner .java
+
+package LinkedListImplementation;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		LinkedList2 list=new LinkedList2();
+		list.insert(18);
+		list.insert(23);
+		list.insert(46);
+		list.show();
+		
+		LinkedList2 list1=new LinkedList2();
+		
+		
+	}
+
+}
+
+
+--------------------------------------------------------------->Stack Implementation 
+
+
+
+package Stack_Implementation;
+public class Stack {
+	int stack[] =new int[5];
+	int top=0;
+public int size() {
+	return top;
+}
+public boolean isEmpty() {
+	return top<=0;
+}
+public void push(int data) {
+	if(top==5) {
+		System.out.println("Stack is Full");
+	}
+	else {
+	stack[top]=data;
+	top++;
+	}
+}
+public int pop() {
+	int data=0;
+	if(isEmpty()) {
+		System.out.print("stack is empty");
+	}
+	else {
+	top--; //we should decrease top as it is increases at push
+	data=stack[top];
+	stack[top]=0;
+	}
+	return data;
+}
+public void show() {
+	for(int n:stack) {
+		System.out.print(n+" ");
+	}
+}
+public int  peek() {
+ int data;
+ data=stack[top-1];
+ return data;
+}
+
+}
+
+
+
+
+
+-------------------------------------->Quque Implementation
+
+package QuqueImplementation;
+
+public class QuequeImplementation1 {
+ int queque[]=new int[5];
+ int size=0;
+ int front=0;
+ int rear=0;
+ public void insert(int data) { //its also called enQueue
+	 if(!isFull())
+	 {
+	queque[rear]=data;
+	rear=(rear+1)%5;
+	size=size+1;
+	 }
+	 else
+	 {
+		 System.out.print("Queue  is Full");
+	 }
+ }
+ public int remove() {
+	 int data=queque[front];
+	 if(!isEmpty()) {
+	 front=(front+1)%5;
+	 size=size-1;
+	 }
+	 else {
+		 System.out.print("Queque is EMpoty");
+	 }
+	 return data;
+ } 
+ public boolean isEmpty() {
+		 return size==0;
+	 
+ }
+ public boolean isFull() {
+	 return size==5;
+ }
+ public int getSize() {
+	 return size;
+ }
+ public void show() {
+	 System.out.print("Elements: ");
+	 for(int i=0;i<size;i++) {
+		 System.out.print(queque[(front+i)%5]+" ");
+	 }
+ }
+ 
+}
+
+
+
+-->>>>QUeque Implementation usuing stack --leetcode problem  (225)
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+class MyStack {
+    Queue<Integer> que = new LinkedList<>();
+
+    public MyStack() {
+    }
+
+    public void push(int x) {
+     // add new element to queue
+     que.add(x);
+        int size = que.size();
+        for (int i = 0; i < size - 1; i++) {
+            que.add(que.peek());
+            que.remove(); // rotate to move new element to front
+        }
+    }
+
+    public int pop() {
+        return que.remove(); // removes the top (which is front of queue)
+    }
+
+    public int top() {
+        return que.peek(); // returns the top (front of queue)
+    }
+
+    public boolean empty() {
+        return que.isEmpty();
+    }
+}
+
+
+
+
+
+------------------------------------------------------------------------------------------>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
