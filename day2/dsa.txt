@@ -1,0 +1,59 @@
+3 sum---------------------------> leetcode(3 sum)
+
+import java.util.*;
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        int n = nums.length;
+
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    // Check if the 3 elements sum to 0
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                        // Put them into a list
+                        List<Integer> triplet = new ArrayList<>();
+                        triplet.add(nums[i]);
+                        triplet.add(nums[j]);
+                        triplet.add(nums[k]);
+
+                        Collections.sort(triplet);
+
+                      
+                        // Check if this triplet is already in the result
+                        if (!result.contains(triplet)) {
+                            result.add(triplet);
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+}
+....................................................................................................................
+
+Double LinkedList
+-> Implemnetation 
+->Deleteing Head
+->Deleteing Tail
+---------------------------------------------------------------------------------------------------------------------
+
+->Difference betwwen var let const 
+var dont have scope it is global but when we redeclare vearible using var it create problem 
+it better to use so it have separate block space and glocbal sscope ;
+
+Common HTML Events
+Here is a list of some common HTML events:
+
+Event	Description
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	The browser has finished loading the page
+The list is much longer: W3Schools JavaScript Reference HTML DOM Events.
