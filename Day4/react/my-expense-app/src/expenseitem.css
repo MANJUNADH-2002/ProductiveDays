@@ -1,0 +1,35 @@
+/* expenseitem.css */
+.expense-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.expense-item h1 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.expense-item-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 18px;
+    color: #555;
+}
+
+.expense-item-price h2 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.expense-item-price div {
+    font-size: 16px;
+    color: #007bff;
+}
